@@ -44,7 +44,7 @@ def predict(a):
 
 import joblib
 
-naiveBayesModel = open("model/naivemodel.pkl","wb")
+naiveBayesModel = open("models/naivemodel.pkl","wb")
 joblib.dump(clf,naiveBayesModel)
 naiveBayesModel.close()
 

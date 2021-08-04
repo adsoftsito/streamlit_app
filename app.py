@@ -6,6 +6,16 @@ import joblib
 import time
 from PIL import Image
 
+#gender_nv_model = open("models/naivemodel.pkl","rb")
+#gender_cv = joblib.load(gender_vectorizer)
+
+#gender_clf = joblib.load(gender_nv_model)
+
+# load Vectorizer For Gender Prediction
+gender_vectorizer = open("models/gender_vectorizer.pkl","rb")
+gender_cv = joblib.load(gender_vectorizer)
+
+# load Model For Gender Prediction
 gender_nv_model = open("models/naivemodel.pkl","rb")
 gender_clf = joblib.load(gender_nv_model)
 
@@ -15,11 +25,11 @@ def predict_gender(data):
   return result
 
 def load_css(file_name):
-    with open(file_name) as f:
-        st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+  with open(file_name) as f:
+    st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
 
 def load_icon(icon_name):
-    st.markdown('<i class="material-icons">{}</i>'.format(icon_name), unsafe_allow_html=True)
+  st.markdown('<i class="material-icons">{}</i>'.format(icon_name), unsafe_allow_html=True)
 
 def load_images(file_name):
   img = Image.open(file_name)
@@ -42,7 +52,7 @@ def main():
   load_css('icon.css')
   load_icon('people')
 
-  name = st.text_input("Enter Name","Pleas Type Here")
+  name = st.text_input("Enter Name","Please Type Here")
   if st.button("Predict"):
     result = predict_gender([name])
     if result[0] == 0:
@@ -56,3 +66,6 @@ def main():
     st.success('Name: {} was classified as {}'.format(name.title(),prediction))
     load_images(img)
 
+
+if __name__ == "__main__":
+  main()
