@@ -1,15 +1,8 @@
 ssh streamlit@198.251.74.249
 
-8000
-8081
-8082
-8083
-8084
-8085
-8086
-8087
-8088
-8089
+streamlit run hello.py --server.port 80XX
+
+
 8090
 8091
 8092
